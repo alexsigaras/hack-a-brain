@@ -143,10 +143,17 @@ private:
   }
   
   //read from the serial port
-  int read() {  return read(false); }
+
   int read(bool echoChar) {
     //get the byte
-    byte inByte = byte(serial_openBCI.read());
+    byte inByte;
+    int inByteInt;
+    
+    inByteInt = serial_openBCI.readByte();
+    if (inByteInt < 0)
+      return 0;
+
+    byte(inChar);
     if (echoChar) cout << char(inByte) << " ";
     
     //accumulate the data in the buffer
@@ -178,6 +185,11 @@ private:
 
     return int(inByte);
   }
+  
+  //simple public interface for a reading singe char of data from BCI device and updating
+  //the datapacket packet as necessary.
+  public: int read() {  return read(false); }
+
 
   //Accessor for to tell client that a new data packet has been parsed from the byte stream.
 public: bool isNewDataAvailable() { return isNewDataPacketAvailable; }
