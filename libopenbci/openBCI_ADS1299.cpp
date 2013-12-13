@@ -179,6 +179,9 @@ private:
     return int(inByte);
   }
 
+  //Accessor for to tell client that a new data packet has been parsed from the byte stream.
+public: bool isNewDataAvailable() { return isNewDataPacketAvailable; }
+
   //activate or deactivate an EEG channel...channel counting is zero through nchan-1
   public: void changeChannelState(int Ichan,bool activate) {
     if (serial_openBCI.isOpen()) {
