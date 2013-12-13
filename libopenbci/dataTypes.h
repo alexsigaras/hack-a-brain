@@ -11,7 +11,7 @@
 #include <vector>
 using namespace std;
 
-class dataPacket_ADS1299 {
+struct dataPacket_ADS1299 {
   int sampleIndex;
   std::vector<int> values;
  public: dataPacket_ADS1299(int nValues) : values(nValues, 0){
