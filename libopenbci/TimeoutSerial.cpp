@@ -22,6 +22,8 @@
 #include <algorithm>
 #include <iostream>
 #include <boost/bind.hpp>
+#include <exception>
+
 
 using namespace std;
 using namespace boost;
@@ -128,6 +130,22 @@ void TimeoutSerial::read(char *data, size_t size)
                         "Error while reading"));
             //if resultInProgress remain in the loop
         }
+    }
+}
+
+int TimeoutSerial::readByte()
+{
+  int retByteVal = -1;
+  try
+    {
+      char data;
+      read(&data,1);
+      return int(data);
+	
+    }
+  catch (std::exception e) 
+    {
+      return -1;
     }
 }
 

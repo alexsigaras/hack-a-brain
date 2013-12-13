@@ -139,6 +139,13 @@ public:
     void read(char *data, size_t size);
 
     /**
+     * Read one byte of data, blocking
+     * \return read byte as int or < 0 if there was an error.
+     */
+    int readByte();
+
+
+    /**
      * Read some data, blocking
      * \param size how much data to read
      * \return the receive buffer. It iempty if no data is available
@@ -157,6 +164,9 @@ public:
      * \throws boost::system::system_error if any error
      * \throws timeout_exception in case of timeout
      */
+    
+    
+
     std::string readString(size_t size);
 
     /**
