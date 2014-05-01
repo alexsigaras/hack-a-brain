@@ -74,7 +74,7 @@ class openBCI_ADS1299 {
   std::vector<byte> serialBuff;
   int curBuffIndex;
   dataPacket_ADS1299 dataPacket;
-  bool isNewDataPacketAvailable;
+  
   bool isDataPacketUnread;
   int num_channels;
   SerialManager & serial_openBCI;
@@ -92,6 +92,7 @@ public: openBCI_ADS1299(SerialManager &serial,
 								  num_channels(desired_num_channels),
 								  dataPacket(desired_num_channels), 
 								  serial_openBCI(serial)  { }
+  bool isNewDataPacketAvailable;
 private:
   int changeState(int newState) {
     state = newState;
