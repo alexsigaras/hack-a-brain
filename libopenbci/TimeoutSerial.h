@@ -132,7 +132,7 @@ public:
      * Read some data, blocking
      * \param data array of char to be read through the serial device
      * \param size array size
-     * \return numbr of character actually read 0<=return<=size
+     * \return a single byte cast as an int or < 0 if there is an error
      * \throws boost::system::system_error if any error
      * \throws timeout_exception in case of timeout
      */
