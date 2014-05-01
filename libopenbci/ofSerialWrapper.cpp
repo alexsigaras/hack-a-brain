@@ -17,10 +17,37 @@ private:
   ofSerial & ofs;
 
 public: 
-  CompatibleSerial(ofSerial & serial) : (ofs)
-  void close();
-  void flush();
+  ofSerialWrapper(ofSerial & serial) : ofs(serial)
+  void close()
+  {
+    ofs.close()
+  };
+  void flush()
+  {
+    ofs.flush();
+  };
   void write(const char *data, size_t size);
+  {
+    ofs.writeByes(data, size);
+  }
+
+  void writeString(const std::string & s)
+  {
+    write(s.c_str(), s.size());
+  }
+
   void read(char *data, size_t size);
-  bool isOpen();
+  {
+    ofs.readBytes(data, size);
+  }
+  
+  int readByte()
+  {
+    return ofs.readByte();
+  }
+
+  bool isOpen()
+  {
+    return ofs.isAvailable();
+  };
 }; 
