@@ -139,8 +139,8 @@ public: int startDataTransfer(int mode) {
   }
   
   void stopDataTransfer() {
-    serial_openBCI.write(command_stop + "\n");
-    serial_openBCI.clear(); // clear anything in the com port's buffer
+    serial_openBCI.writeString(command_stop + "\n");
+    serial_openBCI.flush(); // clear anything in the com port's buffer
   }
   
   //read from the serial port
