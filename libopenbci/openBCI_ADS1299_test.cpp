@@ -9,6 +9,7 @@ int main(int argc, char * argv[])
   unsigned int byteCount = 0;
   bool echoBytes = false;
   openBCI_ADS1299<TimeoutSerial> ads_driver(serial, 8);
+  ads_driver.startDataTransfer();
   int curPacketInd = 0;
   while(1)
     {
