@@ -258,3 +258,10 @@ void TimeoutSerial::readCompleted(const boost::system::error_code& error,
 
     result=resultError;
 }
+
+ void TimeoutSerial::flush()
+ {
+  while(readByte() > 0)
+    {
+    }
+}

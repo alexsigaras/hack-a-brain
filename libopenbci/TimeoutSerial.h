@@ -170,6 +170,13 @@ public:
     std::string readString(size_t size);
 
     /**
+     * Function to clear any data still in the write queue
+     *
+     */
+    void flush();
+
+
+    /**
      * Read a line, blocking
      * Can only be used if the user is sure that the serial device will not
      * send binary data. For binary data read, use read()
@@ -217,7 +224,7 @@ private:
     void performReadSetup(const ReadSetupParameters& param);
 
     /**
-     * Callack called either when the read timeout is expired or canceled.
+     * Callback called either when the read timeout is expired or canceled.
      * If called because timeout expired, sets result to resultTimeoutExpired
      */
     void timeoutExpired(const boost::system::error_code& error);
