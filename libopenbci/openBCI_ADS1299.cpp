@@ -113,25 +113,25 @@ private:
 
   
   //start the data transfer using the current mode
-  int startDataTransfer() {
+public: int startDataTransfer() {
     return startDataTransfer(dataMode);
   }
   
-  //start data trasnfer using the given mode
-  int startDataTransfer(int mode) {
+  //start data transfer using the given mode
+public: int startDataTransfer(int mode) {
     dataMode = mode;
     stopDataTransfer();
     switch (mode) {
       case DATAMODE_BIN:
-        serial_openBCI.write(command_startBinary + "\n");
+        serial_openBCI.writeString(command_startBinary + "\n");
         cout << "Processing: OpenBCI_ADS1299: starting binary\n";
         break;
       case DATAMODE_BIN_4CHAN:
-        serial_openBCI.write(command_startBinary_4chan + "\n");
+        serial_openBCI.writeString(command_startBinary_4chan + "\n");
         cout << "Processing: OpenBCI_ADS1299: starting binary 4-channel\n";
         break;      
       case DATAMODE_TXT:
-        serial_openBCI.write(command_startText + "\n");
+        serial_openBCI.writeString(command_startText + "\n");
         cout << "Processing: OpenBCI_ADS1299: starting text";
         break;
     }
