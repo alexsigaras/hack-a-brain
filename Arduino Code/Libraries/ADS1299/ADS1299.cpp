@@ -4,7 +4,6 @@
 //  Created by Conor Russomanno, Luke Travis, and Joel Murphy. Summer, 2013
 //
 
-
 #include "pins_arduino.h"
 #include "ADS1299.h"
 
@@ -20,7 +19,6 @@ void ADS1299::initialize(int _DRDY, int _RST, int _CS, int _FREQ){
 		delayMicroseconds(4);	// toggle reset pin
 		pinMode(RST,HIGH);
 		delayMicroseconds(20);	// recommended to wait 18 Tclk before using device (~8uS);
-	
 
     // **** ----- SPI Setup ----- **** //
     
@@ -60,12 +58,8 @@ void ADS1299::initialize(int _DRDY, int _RST, int _CS, int _FREQ){
 		default:
 			break;
 	}
-    SPCR = (SPCR & ~SPI_CLOCK_MASK) | (DIVIDER);  // set SCK frequency  
-    SPSR = (SPSR & ~SPI_2XCLOCK_MASK) | (DIVIDER); // by dividing 16MHz system clock
-    
-    
-    
-    
+    SPCR = (SPCR & ~SPI_CLOCK_MASK) | (DIVIDER);    // set SCK frequency  
+    SPSR = (SPSR & ~SPI_2XCLOCK_MASK) | (DIVIDER);  // by dividing 16MHz system clock
     
     // **** ----- End of SPI Setup ----- **** //
     
@@ -374,6 +368,3 @@ void ADS1299::printHex(byte _data){
 //-------------------------------------------------------------------//
 //-------------------------------------------------------------------//
 //-------------------------------------------------------------------//
-
-
-
