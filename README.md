@@ -1,4 +1,4 @@
-# openbci
+# hack-a-brain
 
 Arduino code for Hack a Brain
 
